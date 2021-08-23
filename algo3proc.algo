@@ -1,0 +1,24 @@
+PROCEDURE dot_ptoduct (v1,v2 : ARRAY_OF INTEGER[2];VAR ps:INTEGER)
+VAR
+    i:INTEGER
+BEGIN
+FOR i FROM 0 TO v1.length  DO
+    ps:=ps+v1[i]*v2[i]
+END_FOR
+END
+
+ALGORITHM orthogonal 
+VAR
+    tab : ARRAY_OF INTEGER[4]:=[[1,0],[-2,3],[3,-2],[0,1]];
+    p:INTEGER
+BEGIN
+    FOR i FROM 0 TO tab.length-1   DO
+        FOR j FROM i+1 TO tab.length  DO
+            dot_ptoduct(tab[i],tab[j],p)
+            IF (p=0) THEN
+                ecrire("vecteur:",i, "et vecteur",j,"sont orthogonaux")
+            END_IF
+        END_FOR
+        
+    END_FOR
+END
